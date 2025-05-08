@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore the menu at Tokubetsu, featuring a variety of Pan-Asian dishes." />
+  <title>Tokubetsu - Menu</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" rel="preload" as="style" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dark body {
+      background-color: #1f2937;
+      color: #e5e7eb;
+    }
+    .dark .bg-white {
+      background-color: #2d3748;
+    }
+    .dark .bg-gray-50 {
+      background-color: #374151;
+    }
+    .dark .text-gray-900 {
+      color: #f9fafb;
+    }
+    .dark .text-gray-600 {
+      color: #9ca3af;
+    }
+    .dark .text-gray-700 {
+      color: #d1d5db;
+    }
+    .dark .bg-green-600 {
+      background-color: #34d399;
+    }
+    .dark .hover\:bg-green-700:hover {
+      background-color: #2dd4bf;
+    }
+    .dark .shadow-md {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    .dark .shadow-lg {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    }
+    #dark-mode-toggle {
+      padding: 0.75rem;
+    }
+    #dark-mode-toggle i {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body class="text-gray-900 antialiased" onload="AOS.init({ duration: 800, once: true }); initAnimations();">
+  <button id="dark-mode-toggle" class="fixed top-20 right-4 rounded-full bg-gray-200 hover:bg-gray-300 z-50 transition-all duration-300" onclick="toggleDarkMode()">
+    <i class="fas fa-moon text-gray-800"></i>
+  </button>
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <picture>
+          <source srcset="/tokubetsu.webp" type="image/webp" />
+          <img src="/tokubetsu.png" alt="Tokubetsu Logo" class="h-12 w-12 object-contain" loading="lazy" />
+        </picture>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900"><strong>Tokubetsu</strong></h1>
+      </div>
+      <nav class="flex space-x-6">
+        <a href="index.html#about" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200">About</a>
+        <a href="#menu" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200">Menu</a>
+        <a href="index.html#order" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="menu" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Our Full Menu</h3>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Discover a wide range of Pan-Asian delights, drinks, and desserts prepared with fresh ingredients and authentic recipes.
+      </p>
+    </div>
+
+<!-- New Image Grid Section -->
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+    <h4 class="text-2xl font-semibold text-center text-gray-900 mb-8 dark:text-gray-100" data-aos="fade-up">Menu Highlights</h4>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (1).jpeg', 'Chicken Chowmein')">
+        <img src="/images/menu (1).jpeg" alt="Chicken Chowmein" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (2).jpeg', 'Pork Momo')">
+        <img src="/images/menu (2).jpeg" alt="Pork Momo" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (3).jpeg', 'Fried Rice')">
+        <img src="/images/menu (3).jpeg" alt="Fried Rice" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (4).jpeg', 'Mochi Dessert')">
+        <img src="/images/menu (4).jpeg" alt="Mochi Dessert" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (5).jpeg', 'Shin Ramyun')">
+        <img src="/images/menu (5).jpeg" alt="Shin Ramyun" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (6).jpeg', 'Kimchi Fried Rice')">
+        <img src="/images/menu (6).jpeg" alt="Kimchi Fried Rice" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (7).jpeg', 'Jajangmyeon')">
+        <img src="/images/menu (7).jpeg" alt="Jajangmyeon" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (8).jpeg', 'Samgyeopsal')">
+        <img src="/images/menu (8).jpeg" alt="Samgyeopsal" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (9).jpeg', 'Korean Soju')">
+        <img src="/images/menu (9).jpeg" alt="Korean Soju" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (10).jpeg', 'Wine')">
+        <img src="/images/menu (10).jpeg" alt="Wine" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (11).jpeg', 'Beer')">
+        <img src="/images/menu (11).jpeg" alt="Beer" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+      <div class="relative overflow-hidden rounded-lg shadow-md cursor-pointer" onclick="openLightbox('/images/menu (12).jpeg', 'DaarSan')">
+        <img src="/images/menu (12).jpeg" alt="DaarSan" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm mb-4">© 2025 Tokubetsu. All rights reserved.</p>
+      <p class="text-sm mb-6">
+        Built by <a href="https://dzzn.org" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Dijan Rai</a>
+      </p>
+      <div class="flex justify-center space-x-6">
+        <a href="https://www.facebook.com/tokubetsudharan/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/tokubetsupanasian/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@tokubetsupanasiancuisine" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:Tokubetsupanasian@gmail.com" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

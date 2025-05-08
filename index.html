@@ -1,117 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Discover Tokubetsu, a vibrant Pan-Asian restaurant in Dharan celebrating culture, creativity, and culinary connection." />
-    <title>Tokubetsu - Pan-Asian Cuisine</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href="/background.webp" type="image/webp" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: 'Poppins', sans-serif;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50 text-gray-900 antialiased" onload="AOS.init({ duration: 800, once: true })">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <picture>
-            <source srcset="/tokubetsu.webp" type="image/webp" />
-            <img src="/tokubetsu.png" alt="Tokubetsu Logo" class="h-12 w-12 object-contain" decoding="async" />
-          </picture>
-          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900"><strong>Tokubetsu</strong></h1>
-        </div>
-        <nav class="flex space-x-6">
-          <a href="#about" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200" aria-label="About Section">About</a>
-          <a href="#order" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200" aria-label="Order Section">Order</a>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover Tokubetsu, a vibrant Pan-Asian restaurant in Dharan celebrating culture, creativity, and culinary connection." />
+  <title>Tokubetsu - Pan-Asian Cuisine</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" rel="preload" as="style" />
+  <link rel="preload" as="image" href="/background.webp" type="image/webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .section-bg {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      transition: background 0.3s ease;
+    }
+    /* Dark Mode Styles */
+    .dark body {
+      background-color: #1f2937;
+      color: #e5e7eb;
+    }
+    .dark .section-bg {
+      background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    }
+    .dark .bg-white {
+      background-color: #2d3748;
+      transition: background-color 0.3s ease;
+    }
+    .dark .bg-gray-50 {
+      background-color: #374151;
+      transition: background-color 0.3s ease;
+    }
+    .dark .bg-gray-100 {
+      background-color: #4b5563;
+      transition: background-color 0.3s ease;
+    }
+    .dark .text-gray-900 {
+      color: #f9fafb;
+      transition: color 0.3s ease;
+    }
+    .dark .text-gray-600 {
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+    .dark .text-gray-700 {
+      color: #d1d5db;
+      transition: color 0.3s ease;
+    }
+    .dark .bg-green-600 {
+      background-color: #34d399;
+      transition: background-color 0.3s ease;
+    }
+    .dark .hover:bg-green-700:hover {
+      background-color: #2dd4bf;
+      transition: background-color 0.3s ease;
+    }
+    .dark .shadow-md {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    .dark .shadow-lg {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+    /* Larger Toggle Button */
+    #dark-mode-toggle {
+      padding: 0.75rem; /* Increased padding for a larger button */
+    }
+    #dark-mode-toggle i {
+      font-size: 1.5rem; /* Larger icon size */
+    }
+  </style>
+</head>
+<body class="text-gray-900 antialiased" onload="AOS.init({ duration: 800, once: true }); initAnimations();">
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle" class="fixed top-20 right-4 rounded-full bg-gray-200 hover:bg-gray-300 z-50 transition-all duration-300" onclick="toggleDarkMode()">
+    <i class="fas fa-moon text-gray-800"></i>
+  </button>
 
-    <!-- Hero Section -->
-    <section class="relative h-[85vh] bg-center bg-cover bg-no-repeat flex items-center justify-center" style="background-color:#000; background-image: url('/background.webp');">
-      <div class="absolute inset-0 bg-black/60"></div>
-      <div class="relative z-10 text-center px-4" data-aos="fade-up">
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">Welcome to Tokubetsu!</h2>
-        <p class="text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto mb-8">
-          Visit us and experience the rich flavors of diverse <strong>Pan-Asian</strong> cuisine, crafted to delight your senses in every bite.
-        </p>
-        <a href="#order" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300" aria-label="Book or Order Now">
-          Book Now
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <picture>
+          <source srcset="/tokubetsu.webp" type="image/webp" />
+          <img src="/tokubetsu.png" alt="Tokubetsu Logo" class="h-12 w-12 object-contain" loading="lazy" />
+        </picture>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900"><strong>Tokubetsu | Pan-Asian Cuisine</strong></h1>
+      </div>
+      <nav class="flex space-x-6">
+        <a href="#about" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200" aria-label="About Section">About</a>
+        <a href="#menu" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200" aria-label="Menu Section">Menu</a>
+        <a href="#order" class="text-base font-medium text-gray-700 hover:text-green-600 transition-colors duration-200" aria-label="Order Section">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[85vh] bg-center bg-cover bg-no-repeat flex items-center justify-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.webp');">
+    <div class="relative z-10 text-center px-4" data-aos="fade-up">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">Welcome to Tokubetsu!</h2>
+      <p class="text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto mb-8">
+        Experience the rich flavors of diverse <strong>Pan-Asian</strong> cuisine, crafted to delight your senses in every bite.
+      </p>
+      <a href="#order" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300" aria-label="Book or Order Now">
+        Book Now
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 section-bg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">About Us</h3>
+      <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Tokubetsu is a culinary haven in Dharan, offering a fusion of Pan-Asian flavors that celebrate culture, creativity, and connection. Join us for an unforgettable dining experience.
+      </p>
+      <p class="text-lg text-gray-700 mb-8 flex justify-center items-center gap-2">
+        <span class="text-2xl" aria-hidden="true">📍</span>
+        Balbhadrapath, Sainik Chowk, Dharan-10
+      </p>
+      <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl shadow-xl" data-aos="zoom-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.842361452219!2d87.27578997454793!3d26.81246236439319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef415cd2a02e31%3A0x62e42a65ddc4f091!2sTokubetsu%20Pan-AsianCuisine!5e1!3m2!1sen!2snp!4v1746521042650!5m2!1sen!2snp"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="absolute top-0 left-0 w-full h-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Our Menu</h3>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Explore our diverse selection of Pan-Asian dishes, crafted with fresh ingredients and authentic flavors.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-right">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2">Dynamite Roll</h4>
+          <p class="text-gray-600 mb-4">A variety of prawn tempura, spicy mayo, avacado & tanuki.</p>
+          <p class="text-lg font-medium text-green-600">NPR 885</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-up">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2">Salmon Roll</h4>
+          <p class="text-gray-600 mb-4">Made with creamy crab, cucumber and topped with tobiko.</p>
+          <p class="text-lg font-medium text-green-600">NPR 1045</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-aos="fade-left">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2">Shredded Chicken Chilli Oil</h4>
+          <p class="text-gray-600 mb-4">Tender chicken tossed in aromatic chilli oil.</p>
+          <p class="text-lg font-medium text-green-600">NPR 645</p>
+        </div>
+      </div>
+      <a href="menu.html" class="mt-8 inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300" aria-label="View Full Menu">
+        View Full Menu
+      </a>
+    </div>
+  </section>
+
+  <!-- Order Section -->
+  <section id="order" class="py-24 section-bg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Book a Table or Order Online</h3>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Whether you're planning a night out or craving your favorites at home, we're just a call away.
+      </p>
+      <a href="tel:+9779815357058" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300" aria-label="Call Tokubetsu">
+        <i class="fas fa-phone-alt"></i> Call Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm mb-4">© 2025 Tokubetsu. All rights reserved.</p>
+      <p class="text-sm mb-6">
+        Built by <a href="https://dzzn.org" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Dijan Rai</a>
+      </p>
+      <div class="flex justify-center space-x-6">
+        <a href="https://www.facebook.com/tokubetsudharan/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/tokubetsupanasian/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@tokubetsupanasiancuisine" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="mailto:Tokubetsupanasian@gmail.com" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Email">
+          <i class="fas fa-envelope"></i>
         </a>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-        <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">About Us</h3>
-        <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Tokubetsu is a culinary haven in Dharan, offering a fusion of Pan-Asian flavors that celebrate culture, creativity, and connection. Join us for an unforgettable dining experience.
-        </p>
-        <p class="text-lg text-gray-700 mb-8 flex justify-center items-center gap-2">
-          <span class="text-2xl" aria-hidden="true">📍</span>
-          Balbhadrapath, Sainik Chowk, Dharan-10
-        </p>
-        <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl shadow-xl" data-aos="zoom-in">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.842361452219!2d87.27578997454793!3d26.81246236439319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef415cd2a02e31%3A0x62e42a65ddc4f091!2sTokubetsu%20Pan-AsianCuisine!5e1!3m2!1sen!2snp!4v1746521042650!5m2!1sen!2snp"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="absolute top-0 left-0 w-full h-full"
-          ></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Order Section -->
-    <section id="order" class="py-24 bg-gradient-to-b from-gray-100 to-white">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-        <h3 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Book a Table or Order Online</h3>
-        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Whether you're planning a night out or craving your favorites at home, we're just a call away.
-        </p>
-        <a href="tel:+9779815357058" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300" aria-label="Call Tokubetsu">
-          <i class="fas fa-phone-alt"></i> Call Now
-        </a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-sm mb-4">© 2025 Tokubetsu. All rights reserved.</p>
-        <p class="text-sm mb-6">
-          Built by <a href="https://dzzn.org" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Dijan Rai</a>
-        </p>
-        <div class="flex justify-center space-x-6">
-          <a href="https://www.facebook.com/tokubetsudharan/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.instagram.com/tokubetsupanasian/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.tiktok.com/@tokubetsupanasiancuisine" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="TikTok">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="mailto:Tokubetsupanasian@gmail.com" class="text-2xl text-gray-400 hover:text-green-400 transition-colors duration-200" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-    </footer>
-  </body>
+  <script src="/script.js" defer></script>
+</body>
 </html>
